@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>demo</title>
+
+    <style>
+        body {
+            /* set margin to 0 and overflow to hidden, to go fullscreen */
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        #HUD {
+            position: absolute;
+            float: left;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 5px;
+            border-color: #fff;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div id="Stats-output"></div>
+    <div id = "HUD"></div>
+    <!-- Div which will hold the Output -->
+    <div id="WebGL-output">
+    </div>
+    <div id="label"></div>
+    <script type="text/javascript" src="./libs/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="./libs/three.js"></script>
+    <script type="text/javascript" src="./libs/Tween.js"></script>
+    <script type="text/javascript" src="./libs/loaders/DDSLoader.js"></script>
+    <script type="text/javascript" src="./libs/loaders/OBJLoader.js"></script>
+    <script type="text/javascript" src="./libs/loaders/MTLLoader.js"></script>
+    <script type="text/javascript" src="./libs/loaders/GLTFLoader.js"></script>
+    <script type="text/javascript" src="./libs/loaders/DRACOLoader.js"></script>
+    <script type="text/javascript" src="./libs/controls/OrbitControls.js"></script>
+    <script type="text/javascript" src="./libs/controls/FirstPersonControls.js"></script>
+    <script type="text/javascript" src="./libs/stats.js"></script>
+    <script type="text/javascript" src="./libs/dat.gui.js"></script>
+    <script type="text/javascript" src="./js/demo.js"></script>
+    <script type="text/javascript">
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,177 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <!--[if IE]>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<![endif]-->
+    <title>3D Model Streaming with WebGL</title>
+    <!-- BOOTSTRAP CORE STYLE -->
+    <link href="css/bootstrap.css" rel="stylesheet" />
+    <!-- FONT AWESOME ICON STYLE -->
+    <link href="css/font-awesome.css" rel="stylesheet" />
+    <!-- CUSTOM STYLE CSS -->
+    <link href="css/style.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="header">
+        <div class="overlay">
+            <div class="container">
+                <div class="row">
+                    <!-- <div class="col-md-4 logo-div">
+                        <div class="logo-inner text-center">
+
+                        </div>
+
+                    </div> -->
+                    <div class="col-md-8 header-text-top " id="about">
+
+                        <h1>3D Model Streaming with WebGL</h1>
+						With the development of information technologies and computer science, web applications are being increasingly popular and powerful nowadays. Among the new technologies which contribute to web applications, WebGL is a notable one. With well-performed and powerful 3D streaming, WebGL can be seen in a variety of 3D web applications. And this dissertation focuses on 3D model streaming in visualization of interior design with Three.js. Users can view the interior in a more realistic way in different devices, while having a better performance. In order to improve the results, technologies in mesh simplification, texturing, compression are also used.
+						<!-- <h2><strong>Who I am ? </strong></h2>
+                        <i>I am Jhon Deo </i> -->
+						
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--END HEADER SECTION-->
+    <div class="info-sec">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10">
+                     
+                </div>
+                <div class="col-md-2">
+                    <div class="social-link">
+                        
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!--END INFO SECTION-->
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-md-8 ">
+                <div class="blog-post" id="complexity">
+                    <h2>Reducing Mesh Complexity</h2><br/>
+                    
+                    <h3>Mesh Merging</h3>
+                    <p>
+                        Every time an object is added into the scene, there will be a drawcall from CPU to GPU. Large number of drawcalls will result CPU into spending lots of time in preparing drawcalls. So mesh merging can <span class="hightlight">speed up the rendering</span>. However, mesh merging online only deal with <span class="hightlight">objects with same materials</span>.
+                    </p>
+                    <img src="assets/img/mesh-merging.png" />
+                    <br/><br/>
+                    <h3>Mesh Simplification</h3>
+                    <p>
+                        3D mesh data may have a very high resolution, which may contain many vertices and faces, and sometimes this number may go up to one million or even more. So we need to simplify the mesh (reduce the number or triangles and vertices in a mesh) for faster rendering. One of the most famous algorithm is called <b>QEM</b> which is based on <b>edge collapse</b>.
+                    </p>
+                    <img src="assets/img/mesh-simplification.png" />
+
+                </div>
+                <div class="blog-post" id="texturing">
+                    <h2>Texturing</h2><br/>
+                    <h3>Unfolding</h3>
+                    <p>
+                        Unfolding means to divide a 3D object into pieces and unfold pieces into 2D images. To be unfolded, prerequisites of topology and geometry are required. After a series of operations, the 3D surfaces are unwrapped into a 2D plane, with each vertex assigned to a texture coordinate known as <b>UV coordinates</b>. Also the 2D plane is commonly called UV space.
+                    </p>
+                    <img src="assets/img/unfolding-1.png" /><br/>
+                    <img src="assets/img/unfolding-2.png" />
+                    <br/><br/>
+                    <h3>Texture Baking</h3>
+                    <p>
+                        Texture baking is always used for low-resolution models to <b>simulate details of high-resolution models</b>. This technology is widely applied especially in real-time rendering such as video games. The most commonly used texture type involved in texture baking might be <b>normal map</b>.<br/>To calculate lighting condition of a given surface, we first need to calculate the normal vectors of it. And by changing the directions of normal vectors, we can deceive the computer to render surfaces with details like bumps and dents.
+
+                    </p>
+                    <img src="assets/img/normal-1.png" /><br/>
+                    <img src="assets/img/normal-2.png" />
+                    
+                </div>
+                <div class="blog-post" id="encoding">
+                    <h2>Encoding and Compression</h2><br/>
+                    <h3>Encoding</h3>
+                    <p>
+                        glTF is a format for 3D objects first announced in 2015, and it uses optimized structure to guarantee compatibility and extensibility. The <b>JSON</b> part has a hierarchy which describes the whole scene, animation, camera, and also links with .bin files containing raw data for geometry in binary and images for textures of models by using URIs.
+                    </p>
+                    <img src="assets/img/gltf-1.png" /><br/>
+                    <img src="assets/img/gltf-2.png" />
+                    <br/><br/>
+                    <h3>Compression</h3>
+                    <p>
+                        After the new glTF 2.0 standard came out, Google announced <b>Draco</b>, a new open-source library, that can compress 3D geometric meshes and point clouds. It was then integrated as an extension of glTF 2.0, quantizing mesh attributes and compress connectivity using method named <b>Edgebreaker</b>.
+                        <br/>
+                        It visits triangles in a depth-first manner, and for every triangle it generates a descriptor of symbols in the set {C, L, E, R, S}, also called a <b>clers sequence</b>, which describes the method to attach a new triangle to the previous visited one. Because the frequency of these symbols are different, especially that C composes half of all the symbols, we can use entropy-compression such as Huffman coding.
+
+                    </p>
+                    <img src="assets/img/edgebreaker.png" />
+                    
+                </div>
+                <div class="blog-post" id="visualization">
+                    <h2>Visualization</h2><br/>
+                    <p>
+                        <ul>
+                        <li>Building basic environment (camera, light, scene, renderer)</li>
+                        <li>Skybox</li>
+                        <li>Import</li>
+                        <li>Camera control (OrbitControl: zoom, pan, rotate)</li>
+                        <li>Interaction (roaming, get information)</li>
+                        <li>Mobile device adaptation </li>
+                        </ul>
+                    </p>
+                </div>
+
+                <div class="blog-post" id="results">
+                    <h2>Results</h2><br/>
+                    
+                    <a href="demo.html" class="btn btn-default btn-lg ">See Demo<i class="fa fa-angle-right"></i></a>
+                </div> 
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-3" style="padding-top: 30px;">
+				<div class="row">
+                <ul class="list-group">
+                    <li class="list-group-item"><strong>CATEGORIES</strong></li>
+                    <li class="list-group-item"><a href="#complexity">Reducing Mesh Compexity</a></li>
+                    <li class="list-group-item"><a href="#texturing">Texturing</a></li>
+                    <li class="list-group-item"><a href="#encoding">Encoding and Compression</a></li>
+                    <li class="list-group-item"><a href="#visualization">Visualization</a></li>
+                    <li class="list-group-item"><a href="#results">Results</a></li>
+    
+                </ul>
+				</div>
+            </div>
+
+        </div>
+
+
+    </div>
+
+    <!--END HOME PAGE SECTION-->
+    <div class="footer-sec" style="margin-top: 0px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 foo-inner">
+                    Tan Xiao | ethel223@connect.hku.hk
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END FOOTER SECTION -->
+    <!-- JAVASCRIPT FILES PLACED AT THE BOTTOM TO REDUCE THE LOADING TIME -->
+    <!-- CORE JQUERY -->
+    <!-- <script src="assets/js/jquery-1.11.1.js"></script> -->
+    <!-- BOOTSTRAP SCRIPTS -->
+    <!-- <script src="assets/js/bootstrap.js"></script> -->
+
+</body>
+</html>

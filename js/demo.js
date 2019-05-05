@@ -74,8 +74,8 @@ function init() {
         //loadGLTF(desktopModelPath);
         loadGLTF(mobileModelPath);
     } else {
-        //loadGLTF(mobileModelPath);
-        loadGLTF(desktopModelPath);
+        loadGLTF(mobileModelPath);
+        //loadGLTF(desktopModelPath);
         console.log(navigator.userAgent);
     }
     //loadGLTF('assets/models/gltf/interior2/scene.glb');
